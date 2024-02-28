@@ -22,7 +22,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "thread_id")
-    Thread thread;
+    ForumThread thread;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -30,7 +30,7 @@ public class Message {
 
     private Message() {}
 
-    public Message(String text, Thread thread, User user){
+    public Message(String text, ForumThread thread, User user){
         this.text = text;
         this.thread = thread;
         this.user = user;
@@ -42,6 +42,10 @@ public class Message {
 
     public String getText(){
         return this.text;
+    }
+
+    public User getUser(){
+        return this.user;
     }
 
 }

@@ -45,4 +45,8 @@ public class ForumThread {
         return this.title;
     }
 
+    public Set<Message> getMessages(){
+        return this.messages;
+    }
+
 }

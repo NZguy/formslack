@@ -2,6 +2,9 @@ package com.duncanandrew.formslack.entities;
 
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,4 +51,27 @@ public class Channel {
     public String getName(){
         return this.name;
     }
+
+    public Set<User> getUsers(){
+        return this.users;
+    }
+
+    public Channel addUser(User user){
+        this.users.add(user);
+        return this;
+    }
+
+    public Set<ForumThread> getThreads(){
+        return this.threads;
+    }
+
+    public ForumThread getThreadById(Integer threadId){
+        for (ForumThread forumThread : threads) {
+            if(forumThread.getId() == threadId){
+                return forumThread;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
+    }
+
 }
