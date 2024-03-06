@@ -43,6 +43,7 @@ public class MessageController {
         Optional<User> optUser = userRepository.findById(message.getUser().getId());
         Optional<Channel> optChannel = channelRepository.findById(channelId);
         if(!optChannel.isPresent() || !optUser.isPresent()){
+            // Only in the controller, service layer should only return null and controller throws error
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
         }
         ForumThread thread = optChannel.get().getThreadById(threadId);
@@ -50,6 +51,7 @@ public class MessageController {
         Message newMessage = new Message(message.getText(), thread, user);
         messageRepository.save(newMessage);
         return newMessage;
+        // TODO: Convert to SQL query later
     }
 
 }

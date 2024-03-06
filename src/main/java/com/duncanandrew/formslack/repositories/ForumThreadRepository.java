@@ -1,6 +1,6 @@
 package com.duncanandrew.formslack.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.duncanandrew.formslack.entities.ForumThread;
 
-public interface ForumThreadRepository extends CrudRepository<ForumThread, Integer> {}
+public interface ForumThreadRepository extends JpaRepository<ForumThread, Integer> {}

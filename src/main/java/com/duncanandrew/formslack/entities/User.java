@@ -28,7 +28,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     Set<Message> messages;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "users")
     Set<Channel> channels;
 
     private User() {}
