@@ -8,10 +8,14 @@ spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=none
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
+gradle commands
+gradlew build
+gradlew bootRun
+
 docker commands
 docker build --build-arg JAR_FILE=build/libs/*.jar -t duncanandrew/formslack .
-docker run -p 8080:8080 duncanandrew/formslack
-docker exec duncanandrew/formslack /bin/sh
+docker run -d -p 8080:8080 duncanandrew/formslack -e SPRING_DATASOURCE_PASSWORD=
+docker exec -ti duncanandrew/formslack /bin/sh
 
 AWS
 ssh -i formslackapi.pem ec2-user@<public-ip>
